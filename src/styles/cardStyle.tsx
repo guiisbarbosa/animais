@@ -9,7 +9,6 @@ export const Card = styled.div`
   flex-direction: column;
   overflow: hidden;
   position: relative;
-  margin: 100px;
   box-shadow: 5px 5px 10px #6e6961;
 
   .cardImg {
