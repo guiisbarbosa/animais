@@ -1,5 +1,6 @@
 import { Card } from './components/card.tsx'
 import { Header } from './components/header.tsx'
+import { MainContent } from './components/mainContent.tsx'
 import GlobalStyle from './GlobalStyle.tsx'
 
 export function App() {
@@ -7,7 +8,16 @@ export function App() {
     <>
       <GlobalStyle />
       <Header />
-      <Card />
+      <MainContent>
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        
+      </MainContent>
     </>
   )
 }

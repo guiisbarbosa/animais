@@ -7,10 +7,18 @@ export function Header() {
     <S.Header>
       <img src={animaisLogo} alt="Logo Animais" />
       <ul>
-        <li><div><FaFilter /></div></li>
-        <li><a href="/">Filtro 1</a></li>
-        <li><a href="/">Filtro 2</a></li>
-        <li><a href="/">Filtro 3</a></li>
+        <li>
+          <FaFilter />
+        </li>
+        <li>
+          <a href="/">Filtro 1</a>
+        </li>
+        <li>
+          <a href="/">Filtro 2</a>
+        </li>
+        <li>
+          <a href="/">Filtro 3</a>
+        </li>
       </ul>
     </S.Header>
   )
