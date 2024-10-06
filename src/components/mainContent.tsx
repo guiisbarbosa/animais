@@ -11,6 +11,7 @@ export function MainContent({ children }: MainContentProps) {
       <S.Screen>
         {children}
       </S.Screen>
+      <S.SeeMoreButton>Veja mais...</S.SeeMoreButton>
     </S.Main>
   )
 }

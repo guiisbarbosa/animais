@@ -59,5 +59,9 @@ export const Card = styled.div`
       align-items: center;
       cursor: pointer;
       outline: none;
+
+      &:hover {
+        background-color: #7fd4b5;
+      }
     }
 `
