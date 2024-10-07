@@ -12,12 +12,6 @@ export function App() {
       <MainContent>
         <Card />
         <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
       </MainContent>
       <Footer />
     </>

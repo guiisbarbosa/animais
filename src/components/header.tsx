@@ -11,13 +11,13 @@ export function Header() {
           <FaFilter />
         </li>
         <li>
-          <button>Filtro 1</button>
+          <button type="button">Filtro 1</button>
         </li>
         <li>
-          <button>Filtro 2</button>
+          <button type="button">Filtro 2</button>
         </li>
         <li>
-          <button>Filtro 3</button>
+          <button type="button">Filtro 3</button>
         </li>
       </ul>
     </S.Header>

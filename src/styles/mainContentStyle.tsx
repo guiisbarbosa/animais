@@ -4,11 +4,11 @@ export const Main = styled.main`
   display: flex;
   align-items: center;
   width: 100%;
-  min-height: calc(900px - 80px);
+  min-height: calc(100vh - 180px);
   height: 100%;
   flex-direction: column;
-  justify-content: space-around;
-  flex-grow: 1;
+  justify-content: space-between;
+  margin-bottom: 28px;
 `
 
 export const Screen = styled.div`
@@ -17,6 +17,7 @@ export const Screen = styled.div`
   justify-content: center;
   gap: 32px;
   max-width: 1440px;
+  height: 100%;
 `
 
 export const SeeMoreButton = styled.button`
