@@ -1,11 +1,13 @@
-import { styled } from 'styled-components'
+import { styled } from "styled-components";
 
 export const Footer = styled.footer`
   width: 100%;
   height: 52px;
   display: flex;
   justify-content: center;
-`
+  position: fixed;
+  bottom: 0;
+`;
 
 export const DevDisplay = styled.div`
   max-width: 1440px;
@@ -32,4 +34,4 @@ export const DevDisplay = styled.div`
   a:hover {
     color: #7fd4b5;
   }
-`
+`;
