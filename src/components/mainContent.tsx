@@ -7,6 +7,7 @@ import { Card } from './card'
 import { useQuery } from '@tanstack/react-query'
 import { getAllAnimals } from '../services/getAllAnimal'
 import { Loader } from './loader'
+import { FaGreaterThan, FaLessThan } from 'react-icons/fa'
 
 export function MainContent() {
   const [currentPage, setCurrentPage] = useState<number>(0)
@@ -22,6 +23,8 @@ export function MainContent() {
       return getAllAnimals(currentPage as number)
     },
   })
+
+  console.log(allAnimals)
 
   if (isLoading) {
     return (
@@ -46,7 +49,7 @@ export function MainContent() {
   return (
     <S.Main>
       <S.Screen>
-        {allAnimals?.map(animal => (
+        {allAnimals?.animals?.map(animal => (
           <div key={animal.id}>
             <Card
               type={animal.type}
@@ -60,7 +63,23 @@ export function MainContent() {
           </div>
         ))}
       </S.Screen>
-      <h3>Página atual: {currentPage + 1} | Total de páginas: {Math.round((allAnimals?.length ?? 0) / 8)}</h3>
+      <S.PaginationContainer>
+        <button
+          type="button"
+          onClick={() => setCurrentPage(currentPage - 1)}
+          disabled={currentPage === 0}
+        >
+          <FaLessThan />
+        </button>
+        <h4>Página atual: {currentPage + 1}</h4>
+        <button
+          type="button"
+          onClick={() => setCurrentPage(currentPage + 1)}
+          disabled={currentPage === (allAnimals?.totalPages ?? 0) - 1}
+        >
+          <FaGreaterThan />
+        </button>
+      </S.PaginationContainer>
     </S.Main>
   )
 }
