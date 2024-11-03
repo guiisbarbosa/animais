@@ -10,7 +10,19 @@ import { FaEye, FaWindowClose } from 'react-icons/fa'
 
 import { DetailedAnimal } from './detailedAnimal'
 
-import type { AnimalData } from '../types/interfaces'
+type AnimalData = {
+  id: string
+  type: boolean
+  kind: string
+  animalSpecies?: string
+  age?: number
+  name?: string
+  sex?: string
+  owner?: string
+  author: string
+  habitat?: string
+  imgUrl?: string
+}
 
 export function Card({
   id,
