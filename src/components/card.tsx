@@ -2,29 +2,34 @@ import gato from '../assets/gato.png'
 import elefante from '../assets/elefante.png'
 
 import * as S from '../styles/cardStyle'
-import { FaEye } from 'react-icons/fa'
-import * as Dialog from '@radix-ui/react-dialog'
-import { StyledRadContent, StyledRadOverlay } from '../styles/radDialogCard'
+import {
+  StRadDiagOverlay,
+  StRadDiagContent,
+  DiagBtnClose,
+  StRadDiagTitle,
+} from '../styles/radDialogCard'
 
-interface CardProps {
-  type: boolean
-  kind: string
-  name?: string
-  habitat?: string
-  owner?: string
-  age?: number
-  imgUrl?: string
-}
+import * as Dialog from '@radix-ui/react-dialog'
+
+import { FaEye, FaWindowClose } from 'react-icons/fa'
+
+import { DetailedAnimal } from './detailedAnimal'
+
+import type { AnimalData } from '../types/interfaces'
 
 export function Card({
+  id,
   type,
   kind,
-  name,
-  habitat,
-  owner,
+  animalSpecies,
   age,
+  name,
+  sex,
+  owner,
+  author,
+  habitat,
   imgUrl,
-}: CardProps) {
+}: AnimalData) {
   const selvagem = type
 
   return (
@@ -55,15 +60,32 @@ export function Card({
       </S.Card>
 
       <Dialog.Portal>
-        <StyledRadOverlay />
-        <StyledRadContent>
-          <Dialog.Description>{selvagem ? kind : name}</Dialog.Description>
+        <StRadDiagOverlay />
+        <StRadDiagContent>
+          <StRadDiagTitle>Detalhes do animal</StRadDiagTitle>
+          <Dialog.Description>
+            <DetailedAnimal
+              id={id}
+              type={type}
+              kind={kind}
+              animalSpecies={animalSpecies}
+              age={age}
+              name={name}
+              sex={sex}
+              owner={owner}
+              author={author}
+              habitat={habitat}
+              imgUrl={imgUrl}
+            />
+          </Dialog.Description>
           <div>
             <Dialog.Close asChild>
-              <button type="button">Fechar</button>
+              <DiagBtnClose type="button">
+                <FaWindowClose />
+              </DiagBtnClose>
             </Dialog.Close>
           </div>
-        </StyledRadContent>
+        </StRadDiagContent>
       </Dialog.Portal>
     </Dialog.Root>
   )

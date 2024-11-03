@@ -18,13 +18,8 @@ export function MainContent() {
     isLoading,
   } = useQuery({
     queryKey: ['allAnimals', currentPage],
-    queryFn: ({ queryKey }) => {
-      const [, currentPage] = queryKey
-      return getAllAnimals(currentPage as number)
-    },
+    queryFn: () => getAllAnimals(currentPage),
   })
-
-  console.log(allAnimals)
 
   if (isLoading) {
     return (
@@ -52,12 +47,16 @@ export function MainContent() {
         {allAnimals?.animals?.map(animal => (
           <div key={animal.id}>
             <Card
+              id={animal.id}
               type={animal.type}
               kind={animal.kind}
-              name={animal.name}
-              habitat={animal.habitat}
-              owner={animal.owner}
+              animalSpecies={animal.animalSpecies}
               age={animal.age}
+              name={animal.name}
+              sex={animal.sex}
+              owner={animal.owner}
+              author={animal.author}
+              habitat={animal.habitat}
               imgUrl={animal.imgUrl}
             />
           </div>
@@ -71,7 +70,7 @@ export function MainContent() {
         >
           <FaLessThan />
         </button>
-        <h4>Página atual: {currentPage + 1}</h4>
+        <h4>Página: {currentPage + 1}</h4>
         <button
           type="button"
           onClick={() => setCurrentPage(currentPage + 1)}
