@@ -1,13 +1,13 @@
 import styled from 'styled-components'
 import * as Dialog from '@radix-ui/react-dialog'
 
-export const StRadDiagOverlay = styled(Dialog.Overlay)`
+export const DiagOverlay = styled(Dialog.Overlay)`
   position: fixed;
   inset: 0;
   background-color: rgba(0, 0, 0, 0.3);
 `
 
-export const StRadDiagContent = styled(Dialog.Content)`
+export const DiagContent = styled(Dialog.Content)`
   position: fixed;
   top: 50%;
   left: 50%;
@@ -38,7 +38,7 @@ export const DiagBtnClose = styled.button`
     }
 `
 
-export const StRadDiagTitle = styled(Dialog.Title)`
+export const DiagTitle = styled(Dialog.Title)`
     font-size: 28px;
     font-family: "Fredoka", system-ui;
     font-weight: 500;

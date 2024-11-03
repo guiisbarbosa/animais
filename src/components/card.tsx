@@ -2,12 +2,7 @@ import gato from '../assets/gato.png'
 import elefante from '../assets/elefante.png'
 
 import * as S from '../styles/cardStyle'
-import {
-  StRadDiagOverlay,
-  StRadDiagContent,
-  DiagBtnClose,
-  StRadDiagTitle,
-} from '../styles/radDialogCard'
+import * as StRad from '../styles/radDialogCard'
 
 import * as Dialog from '@radix-ui/react-dialog'
 
@@ -60,32 +55,22 @@ export function Card({
       </S.Card>
 
       <Dialog.Portal>
-        <StRadDiagOverlay />
-        <StRadDiagContent>
-          <StRadDiagTitle>Detalhes do animal</StRadDiagTitle>
+        <StRad.DiagOverlay />
+        <StRad.DiagContent>
+          <StRad.DiagTitle>Detalhes do animal</StRad.DiagTitle>
           <Dialog.Description>
             <DetailedAnimal
               id={id}
-              type={type}
-              kind={kind}
-              animalSpecies={animalSpecies}
-              age={age}
-              name={name}
-              sex={sex}
-              owner={owner}
-              author={author}
-              habitat={habitat}
-              imgUrl={imgUrl}
             />
           </Dialog.Description>
           <div>
             <Dialog.Close asChild>
-              <DiagBtnClose type="button">
+              <StRad.DiagBtnClose type="button">
                 <FaWindowClose />
-              </DiagBtnClose>
+              </StRad.DiagBtnClose>
             </Dialog.Close>
           </div>
-        </StRadDiagContent>
+        </StRad.DiagContent>
       </Dialog.Portal>
     </Dialog.Root>
   )
