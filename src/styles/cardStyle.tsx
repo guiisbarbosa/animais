@@ -45,7 +45,7 @@ export const Card = styled.div`
 
     button {
       border: none;
-      background-color: #4C8D75;
+      background-color: #4c8d75;
       width: 36px;
       height: 36px;
       border-radius: 50%;

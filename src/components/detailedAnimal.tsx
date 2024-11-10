@@ -2,27 +2,25 @@ import gato from '../assets/gato.png'
 import elefante from '../assets/elefante.png'
 
 import * as S from '../styles/detailedAnimalStyle'
-
+import * as StRad from '../styles/radAccordion'
 import * as Accordion from '@radix-ui/react-accordion'
+import { FaChevronDown } from 'react-icons/fa'
+
+import { AnimalFoods } from './animalFoods'
+import { Loader } from './loader'
 
 import { useQuery } from '@tanstack/react-query'
+
 import { getAnimalById } from '../services/getAnimalById'
-import { Loader } from './loader'
-import { AnimalFoods } from './animalFoods'
+import { NewFoodToAnimalForm } from './newFoodToAnimalForm'
 
 export function DetailedAnimal({ id }: { id: string }) {
-  const sections = [
-    { title: 'Seção 1', content: '<ContentSection1 />' },
-    { title: 'Seção 2', content: '<ContentSection2 />' },
-    { title: 'Seção 3', content: '<ContentSection3 />' },
-  ]
-
   const {
     data: detailedAnimal,
     error,
     isLoading,
   } = useQuery({
-    queryKey: ['detailedAnimal'],
+    queryKey: ['detailedAnimal', id],
     queryFn: () => getAnimalById(id),
   })
 
@@ -93,47 +91,55 @@ export function DetailedAnimal({ id }: { id: string }) {
           </ul>
         </S.AnimalData>
       </S.DetailContent>
-      <Accordion.Root type="single" collapsible className="accordion-root">
-        <Accordion.Item value={'section-1'} className="accordion-item">
+
+      <Accordion.Root type="single" collapsible>
+        <Accordion.Item value={'section-1'}>
           <Accordion.Header>
-            <Accordion.Trigger className="accordion-trigger">
-              Comidas:
-            </Accordion.Trigger>
+            <StRad.AccordionTrigger>
+              <p>Comidas</p>
+              <FaChevronDown className="animateArrow" />
+            </StRad.AccordionTrigger>
           </Accordion.Header>
-          <Accordion.Content className="accordion-content">
-            {detailedAnimal?.foods?.map(food => (
-              <AnimalFoods 
-              key={food.name} 
-              name={food.name} 
-              whereToGet={food.whereToGet} 
-              price={food.price.toLocaleString('pt-BR', {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2,
-              })} />))
-            }
-          </Accordion.Content>
+          <StRad.AccordionContent>
+            <div className="foodContent">
+              {detailedAnimal?.foods && detailedAnimal.foods.length > 0 ? (
+                detailedAnimal.foods.map(food => (
+                  <AnimalFoods
+                    key={food.name}
+                    name={food.name}
+                    whereToGet={food.whereToGet}
+                    price={food.price.toLocaleString('pt-BR', {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                    })}
+                  />
+                ))
+              ) : (
+                <p>Nenhuma comida cadastrada</p>
+              )}
+            </div>
+          </StRad.AccordionContent>
         </Accordion.Item>
 
-        <Accordion.Item value={'section-2'} className="accordion-item">
+        <Accordion.Item value={'section-2'}>
           <Accordion.Header>
-            <Accordion.Trigger className="accordion-trigger">
-              título 2
-            </Accordion.Trigger>
+            <StRad.AccordionTrigger>
+              <p>Adicione uma nova comida para {detailedAnimal?.name ? detailedAnimal.name : 'esse animal'}</p>
+              <FaChevronDown className="animateArrow" />
+            </StRad.AccordionTrigger>
           </Accordion.Header>
-          <Accordion.Content className="accordion-content">
-            conteúdo 2
-          </Accordion.Content>
+          <StRad.AccordionContent>{detailedAnimal?.id && <NewFoodToAnimalForm id={id} />}
+          </StRad.AccordionContent>
         </Accordion.Item>
 
-        <Accordion.Item value={'section-3'} className="accordion-item">
+        <Accordion.Item value={'section-3'}>
           <Accordion.Header>
-            <Accordion.Trigger className="accordion-trigger">
-              título 3
-            </Accordion.Trigger>
+            <StRad.AccordionTrigger>
+              <p>Título 3</p>
+              <FaChevronDown className="animateArrow" />
+            </StRad.AccordionTrigger>
           </Accordion.Header>
-          <Accordion.Content className="accordion-content">
-            conteúdo 3
-          </Accordion.Content>
+          <StRad.AccordionContent>conteúdo 3</StRad.AccordionContent>
         </Accordion.Item>
       </Accordion.Root>
     </>

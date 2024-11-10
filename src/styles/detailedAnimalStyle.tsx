@@ -3,6 +3,7 @@ import { styled } from 'styled-components'
 export const DetailContent = styled.div`
   display: flex;
   gap: 16px;
+  margin-bottom: 16px;
 `
 export const AnimalImg = styled.div`
     min-width: 400px;

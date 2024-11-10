@@ -1,13 +1,14 @@
 import { useState } from 'react'
 
 import * as S from '../styles/mainContentStyle'
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 
 import { Card } from './card'
+import { Loader } from './loader'
 
 import { useQuery } from '@tanstack/react-query'
+
 import { getAllAnimals } from '../services/getAllAnimal'
-import { Loader } from './loader'
-import { FaGreaterThan, FaLessThan } from 'react-icons/fa'
 
 export function MainContent() {
   const [currentPage, setCurrentPage] = useState<number>(0)
@@ -68,7 +69,7 @@ export function MainContent() {
           onClick={() => setCurrentPage(currentPage - 1)}
           disabled={currentPage === 0}
         >
-          <FaLessThan />
+          <FaChevronLeft />
         </button>
         <h4>Página: {currentPage + 1}</h4>
         <button
@@ -76,7 +77,7 @@ export function MainContent() {
           onClick={() => setCurrentPage(currentPage + 1)}
           disabled={currentPage === (allAnimals?.totalPages ?? 0) - 1}
         >
-          <FaGreaterThan />
+          <FaChevronRight />
         </button>
       </S.PaginationContainer>
     </S.Main>
