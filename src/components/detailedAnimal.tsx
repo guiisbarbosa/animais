@@ -8,11 +8,11 @@ import { FaChevronDown } from 'react-icons/fa'
 
 import { AnimalFoods } from './animalFoods'
 import { Loader } from './loader'
+import { NewFoodToAnimalForm } from './newFoodToAnimalForm'
 
 import { useQuery } from '@tanstack/react-query'
 
 import { getAnimalById } from '../services/getAnimalById'
-import { NewFoodToAnimalForm } from './newFoodToAnimalForm'
 
 export function DetailedAnimal({ id }: { id: string }) {
   const {

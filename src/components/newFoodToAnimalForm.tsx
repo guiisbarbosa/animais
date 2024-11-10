@@ -6,11 +6,14 @@ import { postNewFoodToAnimal } from '../services/postNewFoodToAnimal'
 
 // Esquema de validação com zod
 const foodSchema = z.object({
-  name: z.string().min(1, 'Nome é obrigatório'),
-  whereToGet: z.string().min(1, 'Local de compra é obrigatório'),
+  name: z.string().min(1, 'Informe qual a comida'),
+  whereToGet: z.string().min(1, 'Informe onde comprar'),
   price: z
     .string()
     .min(1, 'Preço é obrigatório')
+    .refine(value => !Number.isNaN(Number(value.replace(',', '.'))), {
+      message: 'Preço deve ser um número válido',
+    })
     .transform(value => Number.parseFloat(value.replace(',', '.'))),
 })
 
