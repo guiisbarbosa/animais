@@ -1,6 +1,6 @@
 import { IoPaw } from 'react-icons/io5'
 
-import * as S from '../styles/loaderStyle'
+import * as S from './style'
 
 export const Loader = () => {
   return (

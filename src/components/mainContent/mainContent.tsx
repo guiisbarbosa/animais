@@ -1,14 +1,14 @@
 import { useState } from 'react'
 
-import * as S from '../styles/mainContentStyle'
+import * as S from './style'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 
-import { Card } from './card'
-import { Loader } from './loader'
+import { Card } from '../card/card'
+import { Loader } from '../loader/loader'
 
 import { useQuery } from '@tanstack/react-query'
 
-import { getAllAnimals } from '../services/getAllAnimal'
+import { getAllAnimals } from '../../services/getAllAnimal'
 
 export function MainContent() {
   const [currentPage, setCurrentPage] = useState<number>(0)

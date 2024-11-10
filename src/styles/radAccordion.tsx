@@ -61,5 +61,6 @@ export const AccordionContent = styled(Accordion.Content)`
     display: flex;
     gap: 8px;
     flex-wrap: wrap;
+    justify-content: center;
   }
 `

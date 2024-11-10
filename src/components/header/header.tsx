@@ -1,5 +1,5 @@
-import * as S from "../styles/headerStyle";
-import animaisLogo from "../assets/animaislogo.svg";
+import * as S from './style'
+import animaisLogo from "../../assets/animaislogo.svg";
 import { FaFilter } from "react-icons/fa";
 
 export function Header() {

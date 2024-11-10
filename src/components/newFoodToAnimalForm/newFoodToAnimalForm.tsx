@@ -2,7 +2,7 @@ import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { postNewFoodToAnimal } from '../services/postNewFoodToAnimal'
+import { postNewFoodToAnimal } from '../../services/postNewFoodToAnimal'
 
 // Esquema de validação com zod
 const foodSchema = z.object({
@@ -18,7 +18,6 @@ const foodSchema = z.object({
 })
 
 type FoodFormValues = z.infer<typeof foodSchema>
-
 
 export function NewFoodToAnimalForm({ id }: { id: string }) {
   const queryClient = useQueryClient()
@@ -53,13 +52,13 @@ export function NewFoodToAnimalForm({ id }: { id: string }) {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div>
-        <label htmlFor="name">Nome:</label>
+        <label htmlFor="name">Comida:</label>
         <input type="text" {...register('name')} id="name" />
         {errors.name && <p>{errors.name.message}</p>}
       </div>
 
       <div>
-        <label htmlFor="whereToGet">Local de Compra:</label>
+        <label htmlFor="whereToGet">Onde comprar:</label>
         <input type="text" {...register('whereToGet')} id="whereToGet" />
         {errors.whereToGet && <p>{errors.whereToGet.message}</p>}
       </div>

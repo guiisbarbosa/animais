@@ -1,4 +1,4 @@
-import * as S from '../styles/animalFoodStyle'
+import * as S from './style'
 
 type AnimalFood = {
   name: string

@@ -1,18 +1,18 @@
-import gato from '../assets/gato.png'
-import elefante from '../assets/elefante.png'
+import gato from '../../assets/gato.png'
+import elefante from '../../assets/elefante.png'
 
-import * as S from '../styles/detailedAnimalStyle'
-import * as StRad from '../styles/radAccordion'
+import * as S from './style'
+import * as StRad from '../../styles/radAccordion'
 import * as Accordion from '@radix-ui/react-accordion'
 import { FaChevronDown } from 'react-icons/fa'
 
-import { AnimalFoods } from './animalFoods'
-import { Loader } from './loader'
-import { NewFoodToAnimalForm } from './newFoodToAnimalForm'
+import { AnimalFoods } from '../animalFoods/animalFoods'
+import { Loader } from '../loader/loader'
+import { NewFoodToAnimalForm } from '../newFoodToAnimalForm/newFoodToAnimalForm'
 
 import { useQuery } from '@tanstack/react-query'
 
-import { getAnimalById } from '../services/getAnimalById'
+import { getAnimalById } from '../../services/getAnimalById'
 
 export function DetailedAnimal({ id }: { id: string }) {
   const {
@@ -124,11 +124,15 @@ export function DetailedAnimal({ id }: { id: string }) {
         <Accordion.Item value={'section-2'}>
           <Accordion.Header>
             <StRad.AccordionTrigger>
-              <p>Adicione uma nova comida para {detailedAnimal?.name ? detailedAnimal.name : 'esse animal'}</p>
+              <p>
+                Adicione uma nova comida para{' '}
+                {detailedAnimal?.name ? detailedAnimal.name : 'esse animal'}
+              </p>
               <FaChevronDown className="animateArrow" />
             </StRad.AccordionTrigger>
           </Accordion.Header>
-          <StRad.AccordionContent>{detailedAnimal?.id && <NewFoodToAnimalForm id={id} />}
+          <StRad.AccordionContent>
+            {detailedAnimal?.id && <NewFoodToAnimalForm id={id} />}
           </StRad.AccordionContent>
         </Accordion.Item>
 

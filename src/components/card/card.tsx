@@ -1,14 +1,14 @@
-import gato from '../assets/gato.png'
-import elefante from '../assets/elefante.png'
+import gato from '../../assets/gato.png'
+import elefante from '../../assets/elefante.png'
 
-import * as S from '../styles/cardStyle'
-import * as StRad from '../styles/radDialogCard'
+import * as S from './style'
+import * as StRad from '../../styles/radDialogCard'
 
 import * as Dialog from '@radix-ui/react-dialog'
 
 import { FaEye, FaWindowClose } from 'react-icons/fa'
 
-import { DetailedAnimal } from './detailedAnimal'
+import { DetailedAnimal } from '../detailedAnimal/detailedAnimal'
 
 type AnimalData = {
   id: string
@@ -71,9 +71,7 @@ export function Card({
         <StRad.DiagContent>
           <StRad.DiagTitle>Detalhes do animal</StRad.DiagTitle>
           <Dialog.Description>
-            <DetailedAnimal
-              id={id}
-            />
+            <DetailedAnimal id={id} />
           </Dialog.Description>
           <div>
             <Dialog.Close asChild>
