@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import { styled } from 'styled-components'
 
 export const Main = styled.main`
   display: flex;
@@ -8,7 +8,7 @@ export const Main = styled.main`
   flex-direction: column;
   justify-content: space-between;
   margin: 28px 20px;
-`;
+`
 
 export const Screen = styled.div`
   display: flex;
@@ -18,7 +18,7 @@ export const Screen = styled.div`
   max-width: 1440px;
   height: 100%;
   margin-bottom: 20px;
-`;
+`
 
 export const PaginationContainer = styled.div`
   height: 100%;

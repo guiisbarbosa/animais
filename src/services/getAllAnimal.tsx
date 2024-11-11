@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 type AnimalsResponse = {
   animals: {
     id: string
@@ -18,16 +20,12 @@ type AnimalsResponse = {
 
 export async function getAllAnimals(page: number): Promise<AnimalsResponse> {
   try {
-    const response = await fetch(
+    const response = await axios.get<AnimalsResponse>(
       `http://localhost:8081/animals/animal/filter?page=${page}&size=8`
     )
-    if (!response.ok) {
-      throw new Error('Erro ao buscar os dados')
-    }
-    const data = await response.json()
-    return data
+    return response.data
   } catch (error) {
     console.error('Erro:', error)
-    throw error
+    throw new Error('Erro ao buscar os dados')
   }
 }

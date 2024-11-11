@@ -28,12 +28,9 @@ export function Card({
   id,
   type,
   kind,
-  animalSpecies,
   age,
   name,
-  sex,
   owner,
-  author,
   habitat,
   imgUrl,
 }: AnimalData) {
