@@ -1,18 +1,17 @@
+import * as S from './styles'
+
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { postNewFoodToAnimal } from '../../services/postNewFoodToAnimal'
 
-// Esquema de validação com zod
 const foodSchema = z.object({
-  name: z.string().min(1, 'Informe qual a comida'),
-  whereToGet: z.string().min(1, 'Informe onde comprar'),
+  name: z.string().min(1, '*Informe qual a comida'),
+  whereToGet: z.string().min(1, '*Informe onde comprar'),
   price: z
     .string()
-    .min(1, 'Preço é obrigatório')
+    .min(1, '*Preço é obrigatório')
     .refine(value => !Number.isNaN(Number(value.replace(',', '.'))), {
-      message: 'Preço deve ser um número válido',
+      message: '*Preço deve ser um número válido',
     })
     .transform(value => Number.parseFloat(value.replace(',', '.'))),
 })
@@ -37,25 +36,28 @@ export function FoodForm({ onSubmit }: { onSubmit:(data: FoodFormValues) => void
 
   return (
     <form onSubmit={handleSubmit(handleFormSubmit)}>
-      <div>
-        <label htmlFor="name">Comida:</label>
-        <input type="text" {...register('name')} id="name" />
+      <S.InputContent>
+        <S.Label htmlFor="name">*Comida:</S.Label>
+        <S.InputField type="text" {...register('name')} id="name" placeholder='Ração'/>
         {errors.name && <p>{errors.name.message}</p>}
-      </div>
+      </S.InputContent>
 
-      <div>
-        <label htmlFor="whereToGet">Onde comprar:</label>
-        <input type="text" {...register('whereToGet')} id="whereToGet" />
+      <S.InputContent>
+        <S.Label htmlFor="whereToGet">*Onde comprar:</S.Label>
+        <S.InputField type="text" {...register('whereToGet')} id="whereToGet" placeholder='PetShop'/>
         {errors.whereToGet && <p>{errors.whereToGet.message}</p>}
-      </div>
+      </S.InputContent>
 
-      <div>
-        <label htmlFor="price">Preço:</label>
-        <input type="text" {...register('price')} id="price" />
+      <S.InputContent>
+        <S.Label htmlFor="price">*Preço:</S.Label>
+        <S.InputField type="text" {...register('price')} id="price" placeholder='25,00'/>
         {errors.price && <p>{errors.price.message}</p>}
-      </div>
+      </S.InputContent>
+      <S.Message>
+        <p>Itens marcados com * são obrigatórios!</p>
+      </S.Message>
 
-      <button type="submit">Adicionar Comida</button>
+      <S.SubmitBtn type="submit">Adicionar Comida</S.SubmitBtn>
     </form>
   )
 }

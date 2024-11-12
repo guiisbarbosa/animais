@@ -71,7 +71,7 @@ export function MainContent() {
         >
           <FaChevronLeft />
         </button>
-        <h4>Página: {currentPage + 1}</h4>
+        <h4>Página: {currentPage + 1} de {allAnimals?.totalPages}</h4>
         <button
           type="button"
           onClick={() => setCurrentPage(currentPage + 1)}

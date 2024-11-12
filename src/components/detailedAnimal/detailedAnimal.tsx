@@ -16,7 +16,6 @@ import { getAnimalById } from '../../services/getAnimalById'
 import { useMutationWithId } from '../../services/mutations'
 
 export function DetailedAnimal({ id }: { id: string }) {
-  
   const {
     data: detailedAnimal,
     error,
@@ -59,6 +58,10 @@ export function DetailedAnimal({ id }: { id: string }) {
               Nome:{' '}
               {detailedAnimal?.name ? detailedAnimal.name : 'Não especificado'}
             </li>
+            <li>
+              Sexo:{' '}
+              {detailedAnimal?.sex ? detailedAnimal.sex : 'Não especificado'}
+            </li>
             <li>Tipo: {detailedAnimal?.type ? 'Selvagem' : 'Doméstico'}</li>
             <li>
               Animal:{' '}
@@ -87,7 +90,7 @@ export function DetailedAnimal({ id }: { id: string }) {
                 : 'Não especificado'}
             </li>
             <li>
-              Autor:{' '}
+              Autor(a):{' '}
               {detailedAnimal?.author
                 ? detailedAnimal.author
                 : 'Não especificado'}
