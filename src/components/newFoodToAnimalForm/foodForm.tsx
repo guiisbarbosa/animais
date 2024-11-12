@@ -17,10 +17,9 @@ const foodSchema = z.object({
     .transform(value => Number.parseFloat(value.replace(',', '.'))),
 })
 
-type FoodFormValues = z.infer<typeof foodSchema>
+export type FoodFormValues = z.infer<typeof foodSchema>
 
-export function NewFoodToAnimalForm({ id }: { id: string }) {
-  const queryClient = useQueryClient()
+export function FoodForm({ onSubmit }: { onSubmit:(data: FoodFormValues) => void}) {
 
   const {
     register,
@@ -31,26 +30,13 @@ export function NewFoodToAnimalForm({ id }: { id: string }) {
     resolver: zodResolver(foodSchema),
   })
 
-  const mutation = useMutation({
-    mutationFn: (data: FoodFormValues) => postNewFoodToAnimal(id, data),
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: ['detailedAnimal', id],
-      })
-      reset()
-      alert('Dados enviados com sucesso!')
-    },
-    onError: () => {
-      alert('Erro ao enviar os dados')
-    },
-  })
-
-  const onSubmit = (data: FoodFormValues) => {
-    mutation.mutate(data)
-  }
+  const handleFormSubmit = (data: FoodFormValues) => {
+    onSubmit(data);
+    reset();
+  };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(handleFormSubmit)}>
       <div>
         <label htmlFor="name">Comida:</label>
         <input type="text" {...register('name')} id="name" />

@@ -8,13 +8,15 @@ import { FaChevronDown } from 'react-icons/fa'
 
 import { AnimalFoods } from '../animalFoods/animalFoods'
 import { Loader } from '../loader/loader'
-import { NewFoodToAnimalForm } from '../newFoodToAnimalForm/newFoodToAnimalForm'
+import { FoodForm } from '../newFoodToAnimalForm/foodForm'
 
 import { useQuery } from '@tanstack/react-query'
 
 import { getAnimalById } from '../../services/getAnimalById'
+import { useMutationWithId } from '../../services/mutations'
 
 export function DetailedAnimal({ id }: { id: string }) {
+  
   const {
     data: detailedAnimal,
     error,
@@ -23,6 +25,8 @@ export function DetailedAnimal({ id }: { id: string }) {
     queryKey: ['detailedAnimal', id],
     queryFn: () => getAnimalById(id),
   })
+
+  const addNewFoodToAnimal = useMutationWithId(id)
 
   if (isLoading) {
     return <Loader />
@@ -132,7 +136,9 @@ export function DetailedAnimal({ id }: { id: string }) {
             </StRad.AccordionTrigger>
           </Accordion.Header>
           <StRad.AccordionContent>
-            {detailedAnimal?.id && <NewFoodToAnimalForm id={id} />}
+            {detailedAnimal?.id && (
+              <FoodForm onSubmit={addNewFoodToAnimal.mutate} />
+            )}
           </StRad.AccordionContent>
         </Accordion.Item>
 
