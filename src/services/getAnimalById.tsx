@@ -6,7 +6,7 @@ type Food = {
   price: number
 }
 
-type DetailedAnimalResponse = {
+export type DetailedAnimalResponse = {
   id: string
   type: boolean
   kind: string
