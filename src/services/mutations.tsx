@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import type { FoodFormValues } from '../components/newFoodToAnimalForm/foodForm'
+import type { FoodFormValues } from '../components/foodForm/foodForm'
 import { postNewFoodToAnimal } from './postNewFoodToAnimal'
 
 export function mutationAddNewFood(id: string) {

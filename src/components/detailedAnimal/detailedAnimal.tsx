@@ -8,7 +8,7 @@ import { FaChevronDown } from 'react-icons/fa'
 
 import { AnimalFoods } from '../animalFoods/animalFoods'
 import { Loader } from '../loader/loader'
-import { FoodForm } from '../newFoodToAnimalForm/foodForm'
+import { FoodForm } from '../foodForm/foodForm'
 
 import { useQuery } from '@tanstack/react-query'
 
