@@ -13,7 +13,7 @@ import { FoodForm } from '../newFoodToAnimalForm/foodForm'
 import { useQuery } from '@tanstack/react-query'
 
 import { getAnimalById } from '../../services/getAnimalById'
-import { useMutationWithId } from '../../services/mutations'
+import { mutationAddNewFood } from '../../services/mutations'
 
 export function DetailedAnimal({ id }: { id: string }) {
   const {
@@ -25,7 +25,7 @@ export function DetailedAnimal({ id }: { id: string }) {
     queryFn: () => getAnimalById(id),
   })
 
-  const addNewFoodToAnimal = useMutationWithId(id)
+  const addNewFoodToAnimal = mutationAddNewFood(id)
 
   if (isLoading) {
     return <Loader />
