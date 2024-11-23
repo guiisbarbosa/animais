@@ -4,7 +4,6 @@ import { FaChevronDown } from 'react-icons/fa'
 
 import { AnimalFoods } from '../animalFoods/animalFoods'
 import { FoodForm } from '../foodForm/foodForm'
-import { RadixSelect } from './selectFood'
 
 import { mutationAddNewFood } from "../../services/mutations"
 import type { DetailedAnimalResponse } from '../../services/getAnimalById'
@@ -74,7 +73,7 @@ export function RadixAccordion({id, detailedAnimal}: AccordionProps ) {
               <FaChevronDown className="animateArrow" />
             </StRad.AccordionTrigger>
           </Accordion.Header>
-          <StRad.AccordionContent asChild><RadixSelect /></StRad.AccordionContent>
+          <StRad.AccordionContent asChild><h3>abc</h3></StRad.AccordionContent>
         </Accordion.Item>
       </Accordion.Root>
     </>
