@@ -29,7 +29,7 @@ export const Header = styled.header`
       font-size: 16px;
       text-decoration: none;
       color: #EDEBE7;
-      position: relative;
+      position: relative !important;
       background: none;
       outline: none;
       border: none;

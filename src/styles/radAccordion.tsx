@@ -56,11 +56,10 @@ export const AccordionContent = styled(Accordion.Content)`
       height: 0;
     }
   }
-
-  .foodContent {
-    display: flex;
+`
+export const FoodContent = styled.div`
+    display: flex !important;
     gap: 8px;
     flex-wrap: wrap;
     justify-content: center;
-  }
 `

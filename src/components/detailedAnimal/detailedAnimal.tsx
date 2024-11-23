@@ -4,11 +4,11 @@ import elefante from '../../assets/elefante.png'
 import * as S from './style'
 
 import { Loader } from '../loader/loader'
+import { RadixAccordion } from '../ui/accordionDetailedAnimal'
 
 import { useQuery } from '@tanstack/react-query'
 
 import { getAnimalById } from '../../services/getAnimalById'
-import { RadixAccordion } from '../ui/accordionDetailedAnimal'
 
 export function DetailedAnimal({ id }: { id: string }) {
   const {

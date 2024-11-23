@@ -65,19 +65,23 @@ export function Card({
 
       <Dialog.Portal>
         <StRad.DiagOverlay />
-        <StRad.DiagContent>
-          <StRad.DiagTitle>Detalhes do animal</StRad.DiagTitle>
-          <Dialog.Description>
-            <DetailedAnimal id={id} />
-          </Dialog.Description>
-          <div>
-            <Dialog.Close asChild>
-              <StRad.DiagBtnClose type="button">
-                <FaWindowClose />
-              </StRad.DiagBtnClose>
-            </Dialog.Close>
-          </div>
-        </StRad.DiagContent>
+        <Dialog.Content asChild >
+          <StRad.DiagContent>
+            <StRad.DiagTitle>Detalhes do animal</StRad.DiagTitle>
+            <Dialog.Description asChild aria-describedby="dialog-description">
+              <div>
+                <DetailedAnimal id={id} />
+              </div>
+            </Dialog.Description>
+            <div>
+              <Dialog.Close asChild>
+                <StRad.DiagBtnClose type="button">
+                  <FaWindowClose />
+                </StRad.DiagBtnClose>
+              </Dialog.Close>
+            </div>
+          </StRad.DiagContent>
+        </Dialog.Content>
       </Dialog.Portal>
     </Dialog.Root>
   )

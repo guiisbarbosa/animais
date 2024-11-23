@@ -8,7 +8,7 @@ export const Card = styled.div`
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  position: relative;
+  position: relative !important;
   box-shadow: 5px 5px 10px #6e6961;
 
   .cardImg {

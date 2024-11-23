@@ -7,8 +7,8 @@ export const DiagOverlay = styled(Dialog.Overlay)`
   background-color: rgba(0, 0, 0, 0.3);
 `
 
-export const DiagContent = styled(Dialog.Content)`
-  position: fixed;
+export const DiagContent = styled.div`
+  position: fixed !important;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -24,7 +24,7 @@ export const DiagBtnClose = styled.button`
 
     border: 1px solid red;
     border-radius: 4px;
-    position: absolute;
+    position: absolute !important;
     top: 24px;
     right: 24px;
     background-color: transparent;

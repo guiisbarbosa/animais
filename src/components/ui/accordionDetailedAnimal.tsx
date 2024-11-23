@@ -4,6 +4,7 @@ import { FaChevronDown } from 'react-icons/fa'
 
 import { AnimalFoods } from '../animalFoods/animalFoods'
 import { FoodForm } from '../foodForm/foodForm'
+import { RadixSelect } from './selectFood'
 
 import { mutationAddNewFood } from "../../services/mutations"
 import type { DetailedAnimalResponse } from '../../services/getAnimalById'
@@ -24,12 +25,12 @@ export function RadixAccordion({id, detailedAnimal}: AccordionProps ) {
         <Accordion.Item value={'section-1'}>
           <Accordion.Header>
             <StRad.AccordionTrigger>
-              <p>Comidas</p>
+              Comidas
               <FaChevronDown className="animateArrow" />
             </StRad.AccordionTrigger>
           </Accordion.Header>
-          <StRad.AccordionContent>
-            <div className="foodContent">
+          <StRad.AccordionContent asChild>
+            <StRad.FoodContent>
               {detailedAnimal?.foods && detailedAnimal.foods.length > 0 ? (
                 detailedAnimal.foods.map(food => (
                   <AnimalFoods
@@ -45,21 +46,21 @@ export function RadixAccordion({id, detailedAnimal}: AccordionProps ) {
               ) : (
                 <p>Nenhuma comida cadastrada</p>
               )}
-            </div>
+            </StRad.FoodContent>
           </StRad.AccordionContent>
         </Accordion.Item>
 
         <Accordion.Item value={'section-2'}>
           <Accordion.Header>
             <StRad.AccordionTrigger>
-              <p>
+              
                 Adicione uma nova comida para{' '}
                 {detailedAnimal?.name ? detailedAnimal.name : 'esse animal'}
-              </p>
+              
               <FaChevronDown className="animateArrow" />
             </StRad.AccordionTrigger>
           </Accordion.Header>
-          <StRad.AccordionContent>
+          <StRad.AccordionContent asChild>
             {detailedAnimal?.id && (
               <FoodForm onSubmit={addNewFoodToAnimal.mutate} />
             )}
@@ -69,11 +70,11 @@ export function RadixAccordion({id, detailedAnimal}: AccordionProps ) {
         <Accordion.Item value={'section-3'}>
           <Accordion.Header>
             <StRad.AccordionTrigger>
-              <p>Título 3</p>
+              Título 3
               <FaChevronDown className="animateArrow" />
             </StRad.AccordionTrigger>
           </Accordion.Header>
-          <StRad.AccordionContent>conteúdo 3</StRad.AccordionContent>
+          <StRad.AccordionContent asChild><RadixSelect /></StRad.AccordionContent>
         </Accordion.Item>
       </Accordion.Root>
     </>
