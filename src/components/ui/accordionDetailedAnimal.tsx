@@ -4,23 +4,22 @@ import { FaChevronDown } from 'react-icons/fa'
 
 import { AnimalFoods } from '../animalFoods/animalFoods'
 import { FoodForm } from '../foodForm/foodForm'
+import { RadixSelect } from './selectFood'
 
-import { mutationAddNewFood } from "../../services/mutations"
+import { mutationAddNewFood } from '../../services/mutations'
 import type { DetailedAnimalResponse } from '../../services/getAnimalById'
 
-
 interface AccordionProps {
-  id: string,
+  id: string
   detailedAnimal?: DetailedAnimalResponse
 }
 
-export function RadixAccordion({id, detailedAnimal}: AccordionProps ) {
-
+export function RadixAccordion({ id, detailedAnimal }: AccordionProps) {
   const addNewFoodToAnimal = mutationAddNewFood(id)
 
   return (
     <>
-    <Accordion.Root type="single" collapsible>
+      <Accordion.Root type="single" collapsible>
         <Accordion.Item value={'section-1'}>
           <Accordion.Header>
             <StRad.AccordionTrigger>
@@ -52,10 +51,8 @@ export function RadixAccordion({id, detailedAnimal}: AccordionProps ) {
         <Accordion.Item value={'section-2'}>
           <Accordion.Header>
             <StRad.AccordionTrigger>
-              
-                Adicione uma nova comida para{' '}
-                {detailedAnimal?.name ? detailedAnimal.name : 'esse animal'}
-              
+              Adicione uma nova comida para{' '}
+              {detailedAnimal?.name ? detailedAnimal.name : 'esse animal'}
               <FaChevronDown className="animateArrow" />
             </StRad.AccordionTrigger>
           </Accordion.Header>
@@ -69,11 +66,15 @@ export function RadixAccordion({id, detailedAnimal}: AccordionProps ) {
         <Accordion.Item value={'section-3'}>
           <Accordion.Header>
             <StRad.AccordionTrigger>
-              Título 3
+              Selecione e adicione uma comida existente
               <FaChevronDown className="animateArrow" />
             </StRad.AccordionTrigger>
           </Accordion.Header>
-          <StRad.AccordionContent asChild><h3>abc</h3></StRad.AccordionContent>
+          <StRad.AccordionContent asChild>
+            <div>
+              <RadixSelect animalId={detailedAnimal!.id} />
+            </div>
+          </StRad.AccordionContent>
         </Accordion.Item>
       </Accordion.Root>
     </>
