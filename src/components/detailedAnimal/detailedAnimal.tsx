@@ -93,7 +93,7 @@ export function DetailedAnimal({ id }: { id: string }) {
         </S.AnimalData>
       </S.DetailContent>
 
-      <RadixAccordion id={detailedAnimal ? detailedAnimal.id : "" } detailedAnimal={detailedAnimal || undefined}  />
+      <RadixAccordion id={detailedAnimal!.id} detailedAnimal={detailedAnimal!}  />
     </>
   )
 }
