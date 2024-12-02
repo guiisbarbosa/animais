@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import * as StRad from '../../styles/radSelect'
+import * as StRad from '../../styles/radSelectStyle'
 import * as Select from '@radix-ui/react-select'
 
 import { FaChevronDown } from 'react-icons/fa'

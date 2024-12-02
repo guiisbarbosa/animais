@@ -1,10 +1,10 @@
-import * as StRad from '../../styles/radAccordion'
+import * as StRad from '../../styles/radAccordionStyle'
 import * as Accordion from '@radix-ui/react-accordion'
 import { FaChevronDown } from 'react-icons/fa'
 
 import { AnimalFoods } from '../animalFoods/animalFoods'
 import { FoodForm } from '../foodForm/foodForm'
-import { RadixSelect } from './selectFood'
+import { RadixSelect } from './radSelect'
 
 import { mutationAddNewFood } from '../../services/mutations'
 import type { DetailedAnimalResponse } from '../../services/getAnimalById'

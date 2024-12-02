@@ -4,7 +4,7 @@ import elefante from '../../assets/elefante.png'
 import * as S from './style'
 
 import { Loader } from '../loader/loader'
-import { RadixAccordion } from '../ui/accordionDetailedAnimal'
+import { RadixAccordion } from '../ui/radAccordion'
 
 import { useQuery } from '@tanstack/react-query'
 
