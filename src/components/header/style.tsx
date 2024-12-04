@@ -10,10 +10,16 @@ export const Header = styled.header`
   justify-content: space-around;
   align-items: center;
 
-  img {
-    height: 100%;
-  }
+  div {
+    height:100%;
+    display: flex;
+    align-items: end;
+    gap: 12px;
 
+    img{
+      height: 100%;
+    }
+  }
   ul {
     display: flex;
     gap: 24px;
@@ -41,15 +47,15 @@ export const Header = styled.header`
       content: '';
       position: absolute;
       left: 0;
-      bottom: -5px; /* Espaço entre o link e a linha */
+      bottom: -5px;
       width: 0;
-      height: 2px; /* Altura da linha */
+      height: 2px;
       background-color: #EDEBE7;
       transition: width 0.4s ease-out;
     }
 
     button:hover::after {
-      width: 100%; /* Expande a linha de 0 a 100% */
+      width: 100%;
     }
 
   }
