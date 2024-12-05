@@ -2,8 +2,9 @@ import { useMutation, useQueryClient } from '@tanstack/react-query'
 import type { FoodFormValues } from '../components/foodForm/foodForm'
 import { postNewFoodToAnimal } from './postNewFoodToAnimal'
 import { postExistedFoodToAnimal } from './postExistedFoodToAnimal'
+import { postNewFood } from './postNewFood'
 
-export function mutationAddNewFood(id: string) {
+export function mutationAddNewFoodToAnimal(id: string) {
   const queryClient = useQueryClient()
 
   return useMutation({
@@ -31,6 +32,19 @@ export function mutationAddExistedFood(animalId : string) {
       queryClient.invalidateQueries({
         queryKey: ['detailedAnimal', animalId],
       })
+      alert('Comida adicionada com sucesso!')
+    },
+    onError: () => {
+      alert('Erro ao enviar os dados')
+    },
+  })
+}
+
+export function mutationAddNewFood() {
+
+  return useMutation({
+    mutationFn: (data: FoodFormValues) => postNewFood(data),
+    onSuccess: () => {
       alert('Comida adicionada com sucesso!')
     },
     onError: () => {

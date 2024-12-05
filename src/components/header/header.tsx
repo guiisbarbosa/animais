@@ -6,8 +6,12 @@ import { LuDog } from 'react-icons/lu'
 import { TbMeat } from 'react-icons/tb'
 import { RadixDialog } from '../ui/radDialog'
 import { FoodForm } from '../foodForm/foodForm'
+import { mutationAddNewFood } from '../../services/mutations'
 
 export function Header() {
+
+  const addNewFood = mutationAddNewFood();
+
   return (
     <S.Header>
       <div>
@@ -36,7 +40,7 @@ export function Header() {
             </AddButton>
           }
         >
-          <FoodForm />
+          <FoodForm onSubmit={addNewFood.mutate}/>
         </RadixDialog>
       </div>
       <ul>

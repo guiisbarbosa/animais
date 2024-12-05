@@ -3,6 +3,7 @@ import * as S from './styles'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { forwardRef } from 'react'
 
 const foodSchema = z.object({
   name: z.string().min(1, '*Informe qual a comida'),
@@ -18,7 +19,12 @@ const foodSchema = z.object({
 
 export type FoodFormValues = z.infer<typeof foodSchema>
 
-export function FoodForm({ onSubmit }: { onSubmit:(data: FoodFormValues) => void}) {
+type FoodFormProps = {
+  onSubmit: (data: FoodFormValues) => void;
+};
+
+export const FoodForm = forwardRef<HTMLFormElement, FoodFormProps>(
+  ({ onSubmit }, ref) => {
 
   const {
     register,
@@ -35,7 +41,7 @@ export function FoodForm({ onSubmit }: { onSubmit:(data: FoodFormValues) => void
   };
 
   return (
-    <form onSubmit={handleSubmit(handleFormSubmit)}>
+    <form ref={ref} onSubmit={handleSubmit(handleFormSubmit)}>
       <S.InputContent>
         <S.Label htmlFor="name">*Comida:</S.Label>
         <S.InputField type="text" {...register('name')} id="name" placeholder='Ração'/>
@@ -61,3 +67,4 @@ export function FoodForm({ onSubmit }: { onSubmit:(data: FoodFormValues) => void
     </form>
   )
 }
+)
