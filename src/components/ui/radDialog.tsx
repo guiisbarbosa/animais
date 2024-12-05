@@ -1,6 +1,6 @@
 import * as Dialog from '@radix-ui/react-dialog'
 import { FaWindowClose } from 'react-icons/fa'
-import * as StRad from '../../styles/radDialogStyle'
+import * as StRad from './radDialogStyle'
 
 interface RadixDialogProps {
   title: string

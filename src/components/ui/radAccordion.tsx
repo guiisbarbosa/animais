@@ -1,4 +1,4 @@
-import * as StRad from '../../styles/radAccordionStyle'
+import * as StRad from './radAccordionStyle'
 import * as Accordion from '@radix-ui/react-accordion'
 import { FaChevronDown } from 'react-icons/fa'
 
@@ -6,7 +6,7 @@ import { AnimalFoods } from '../animalFoods/animalFoods'
 import { FoodForm } from '../foodForm/foodForm'
 import { RadixSelect } from './radSelect'
 
-import { mutationAddNewFood } from '../../services/mutations'
+import { mutationAddNewFoodToAnimal } from '../../services/mutations'
 import type { DetailedAnimalResponse } from '../../services/getAnimalById'
 
 interface AccordionProps {
@@ -15,7 +15,7 @@ interface AccordionProps {
 }
 
 export function RadixAccordion({ id, detailedAnimal }: AccordionProps) {
-  const addNewFoodToAnimal = mutationAddNewFood(id)
+  const addNewFoodToAnimal = mutationAddNewFoodToAnimal(id)
 
   return (
     <>

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import * as StRad from '../../styles/radSelectStyle'
+import * as StRad from './radSelectStyle'
 import * as Select from '@radix-ui/react-select'
 
 import { FaChevronDown } from 'react-icons/fa'
@@ -9,7 +9,7 @@ import { useQuery } from '@tanstack/react-query'
 import { Loader } from '../loader/loader'
 import { mutationAddExistedFood } from '../../services/mutations'
 
-export function RadixSelect({animalId}: {animalId: string}) {
+export function RadixSelect({ animalId }: { animalId: string }) {
   const [selectedFood, setSelectedFood] = useState<string>('')
 
   const addExistedFood = mutationAddExistedFood(animalId)
@@ -48,9 +48,10 @@ export function RadixSelect({animalId}: {animalId: string}) {
             {detailedFood?.foods.map(food => (
               <StRad.SelectItem key={food.id} value={food.id}>
                 <Select.ItemText>
-                  {food.name} - {food.price.toLocaleString('pt-BR', {
+                  {food.name} -{' '}
+                  {food.price.toLocaleString('pt-BR', {
                     minimumFractionDigits: 2,
-                    maximumFractionDigits: 2
+                    maximumFractionDigits: 2,
                   })}
                 </Select.ItemText>
               </StRad.SelectItem>
@@ -58,8 +59,14 @@ export function RadixSelect({animalId}: {animalId: string}) {
           </StRad.SelectViewport>
         </StRad.SelectContent>
       </Select.Root>
-      <button className='btnSend' type="submit" disabled={!selectedFood} onClick={() => addExistedFood.mutate(selectedFood)}>Adicionar comida</button>
+      <button
+        className="btnSend"
+        type="submit"
+        disabled={!selectedFood}
+        onClick={() => addExistedFood.mutate(selectedFood)}
+      >
+        Adicionar comida
+      </button>
     </StRad.SelectDiv>
-
   )
 }
