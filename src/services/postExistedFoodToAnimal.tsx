@@ -7,8 +7,14 @@ export const postExistedFoodToAnimal = async (animalId: string, foodId: string) 
     );
     return response.data;
   } catch (error) {
-    console.error("Erro ao enviar os dados:", error);
-    alert("Algo deu errado");
+    if(axios.isAxiosError(error)){
+      if(error.response?.status === 500){
+        alert("Alimento já existe para esse animal")
+      } else{
+        alert("Algo deu errado");
+      }
+    }
+    
     throw error;
   }
 };
