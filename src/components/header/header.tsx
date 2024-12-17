@@ -1,6 +1,6 @@
 import * as S from './style'
 import animaisLogo from '../../assets/animaislogo.svg'
-import { FaFilter, FaPlus } from 'react-icons/fa'
+import { FaPlus, FaSearch } from 'react-icons/fa'
 import { AddButton } from '../ui/addButton'
 import { LuDog } from 'react-icons/lu'
 import { TbMeat } from 'react-icons/tb'
@@ -10,8 +10,7 @@ import { mutationAddNewFood } from '../../services/mutations'
 import { AnimalForm } from '../animalForm/animalForm'
 
 export function Header() {
-
-  const addNewFood = mutationAddNewFood();
+  const addNewFood = mutationAddNewFood()
 
   return (
     <S.Header>
@@ -41,23 +40,14 @@ export function Header() {
             </AddButton>
           }
         >
-          <FoodForm onSubmit={addNewFood.mutate}/>
+          <FoodForm onSubmit={addNewFood.mutate} />
         </RadixDialog>
       </div>
-      <ul>
-        <li>
-          <FaFilter />
-        </li>
-        <li>
-          <button type="button">Filtro 1</button>
-        </li>
-        <li>
-          <button type="button">Filtro 2</button>
-        </li>
-        <li>
-          <button type="button">Filtro 3</button>
-        </li>
-      </ul>
+
+      <S.SearchBtn>
+        <FaSearch />
+        <h5>Busca</h5>
+      </S.SearchBtn>
     </S.Header>
   )
 }

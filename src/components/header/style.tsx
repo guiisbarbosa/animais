@@ -60,3 +60,37 @@ export const Header = styled.header`
 
   }
 `;
+
+
+export const SearchBtn = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  color: #594D39;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 20px;
+  gap: 8px;
+  padding: 4px 0;
+  position: relative !important;
+
+    h5 {
+      color: #EDEBE7;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 0;
+      height: 2px;
+      background-color: #97CCBA;
+      transition: width 0.4s ease-out;
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
+`
