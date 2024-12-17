@@ -7,6 +7,7 @@ import { TbMeat } from 'react-icons/tb'
 import { RadixDialog } from '../ui/radDialog'
 import { FoodForm } from '../foodForm/foodForm'
 import { mutationAddNewFood } from '../../services/mutations'
+import { AnimalForm } from '../animalForm/animalForm'
 
 export function Header() {
 
@@ -28,11 +29,11 @@ export function Header() {
             </AddButton>
           }
         >
-          abc
+          <AnimalForm />
         </RadixDialog>
 
         <RadixDialog
-          title="Adicionar um novo animal"
+          title="Adicionar uma nova comida"
           triggerButton={
             <AddButton>
               <FaPlus />
