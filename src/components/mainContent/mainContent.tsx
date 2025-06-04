@@ -1,26 +1,17 @@
-import { useState } from 'react'
+import { useState } from "react";
 
-import * as S from './style'
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
+import * as S from "./style";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
-import { Card } from '../card/card'
-import { Loader } from '../loader/loader'
+import { Card } from "../card/card";
+import { Loader } from "../loader/loader";
 
-import { useQuery } from '@tanstack/react-query'
-
-import { getAllAnimals } from '../../services/getAllAnimal'
+import { useAnimals } from "../../hooks/useAnimals";
 
 export function MainContent() {
-  const [currentPage, setCurrentPage] = useState<number>(0)
+  const [currentPage, setCurrentPage] = useState<number>(0);
 
-  const {
-    data: allAnimals,
-    error,
-    isLoading,
-  } = useQuery({
-    queryKey: ['allAnimals', currentPage],
-    queryFn: () => getAllAnimals(currentPage),
-  })
+  const { data: allAnimals, isLoading, isError } = useAnimals(currentPage);
 
   if (isLoading) {
     return (
@@ -29,23 +20,23 @@ export function MainContent() {
           <Loader />
         </S.Screen>
       </S.Main>
-    )
+    );
   }
 
-  if (error) {
+  if (isError) {
     return (
       <S.Main>
         <S.Screen>
-          <p>Erro ao buscar dados: {error.message}</p>
+          <p>Erro ao buscar dados!</p>
         </S.Screen>
       </S.Main>
-    )
+    );
   }
 
   return (
     <S.Main>
       <S.Screen>
-        {allAnimals?.animals?.map(animal => (
+        {allAnimals?.animals?.map((animal) => (
           <div key={animal.id}>
             <Card
               id={animal.id}
@@ -83,5 +74,5 @@ export function MainContent() {
         </button>
       </S.PaginationContainer>
     </S.Main>
-  )
+  );
 }

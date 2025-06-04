@@ -1,16 +1,16 @@
-import * as S from './style'
-import animaisLogo from '../../assets/animaislogo.svg'
-import { FaPlus, FaSearch } from 'react-icons/fa'
-import { AddButton } from '../ui/addButton'
-import { LuDog } from 'react-icons/lu'
-import { TbMeat } from 'react-icons/tb'
-import { RadixDialog } from '../ui/radDialog'
-import { FoodForm } from '../foodForm/foodForm'
-import { mutationAddNewFood } from '../../services/mutations'
-import { AnimalForm } from '../animalForm/animalForm'
+import * as S from "./style";
+import animaisLogo from "../../assets/animaislogo.svg";
+import { FaPlus, FaSearch } from "react-icons/fa";
+import { AddButton } from "../ui/addButton";
+import { LuDog } from "react-icons/lu";
+import { TbMeat } from "react-icons/tb";
+import { RadixDialog } from "../ui/radDialog";
+import { FoodForm } from "../foodForm/foodForm";
+import { mutationAddNewFood } from "../../services/mutations";
+import { AnimalForm } from "../animalForm/animalForm";
 
 export function Header() {
-  const addNewFood = mutationAddNewFood()
+  const addNewFood = mutationAddNewFood();
 
   return (
     <S.Header>
@@ -44,10 +44,17 @@ export function Header() {
         </RadixDialog>
       </div>
 
-      <S.SearchBtn>
-        <FaSearch />
-        <h5>Busca</h5>
-      </S.SearchBtn>
+      <RadixDialog
+        title="Adicionar uma nova comida"
+        triggerButton={
+          <S.SearchBtn>
+            <FaSearch />
+            <h5>Busca</h5>
+          </S.SearchBtn>
+        }
+      >
+        <FoodForm onSubmit={addNewFood.mutate} />
+      </RadixDialog>
     </S.Header>
-  )
+  );
 }
