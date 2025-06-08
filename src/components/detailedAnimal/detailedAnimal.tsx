@@ -9,7 +9,7 @@ import { RadixAccordion } from "../ui/radAccordion";
 import { useDetailedAnimal } from "../../hooks/useDetailedAnimal";
 
 export function DetailedAnimal({ id }: { id: string }) {
-  const { data: detailedAnimal, isLoading, isError } = useDetailedAnimal(id);
+  const { data: detailedAnimal, isLoading, isError, error } = useDetailedAnimal(id);
 
   if (isLoading) {
     return <Loader />;
@@ -17,7 +17,7 @@ export function DetailedAnimal({ id }: { id: string }) {
 
   if (isError) {
     console.log(isError);
-    return <p>Erro ao buscar dados</p>;
+    return <p>Erro ao buscar dados: {error.message}</p>;
   }
 
   const selvagem = detailedAnimal?.type;

@@ -11,7 +11,7 @@ import { useAnimals } from "../../hooks/useAnimals";
 export function MainContent() {
   const [currentPage, setCurrentPage] = useState<number>(0);
 
-  const { data: allAnimals, isLoading, isError } = useAnimals(currentPage);
+  const { data: allAnimals, isLoading, isError, error } = useAnimals(currentPage);
 
   if (isLoading) {
     return (
@@ -27,7 +27,7 @@ export function MainContent() {
     return (
       <S.Main>
         <S.Screen>
-          <p>Erro ao buscar dados!</p>
+          <p>Erro ao buscar dados: {error.message}</p>
         </S.Screen>
       </S.Main>
     );
