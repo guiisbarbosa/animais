@@ -1,35 +1,28 @@
-import gato from '../../assets/gato.png'
-import elefante from '../../assets/elefante.png'
+import gato from "../../assets/gato.png";
+import elefante from "../../assets/elefante.png";
 
-import * as S from './style'
+import * as S from "./style";
 
-import { Loader } from '../loader/loader'
-import { RadixAccordion } from '../ui/radAccordion'
+import { Loader } from "../loader/loader";
+import { RadixAccordion } from "../ui/radAccordion";
 
-import { useQuery } from '@tanstack/react-query'
-
-import { getAnimalById } from '../../services/getAnimalById'
+import { useDetailedAnimal } from "../../hooks/useDetailedAnimal";
 
 export function DetailedAnimal({ id }: { id: string }) {
-  const {
-    data: detailedAnimal,
-    error,
-    isLoading,
-  } = useQuery({
-    queryKey: ['detailedAnimal', id],
-    queryFn: () => getAnimalById(id),
-  })
-
+  const { data: detailedAnimal, isLoading, isError } = useDetailedAnimal(id);
 
   if (isLoading) {
-    return <Loader />
+    return <Loader />;
   }
 
-  if (error) {
-    return <p>Erro ao buscar dados: {error.message}</p>
+  if (isError) {
+    console.log(isError);
+    return <p>Erro ao buscar dados</p>;
   }
 
-  const selvagem = detailedAnimal?.type
+  const selvagem = detailedAnimal?.type;
+
+  console.log(isError);
 
   return (
     <>
@@ -40,8 +33,8 @@ export function DetailedAnimal({ id }: { id: string }) {
               detailedAnimal?.imgUrl
                 ? detailedAnimal?.imgUrl
                 : selvagem
-                  ? elefante
-                  : gato
+                ? elefante
+                : gato
             }
             alt="Foto do animal"
           />
@@ -49,51 +42,54 @@ export function DetailedAnimal({ id }: { id: string }) {
         <S.AnimalData>
           <ul>
             <li>
-              Nome:{' '}
-              {detailedAnimal?.name ? detailedAnimal.name : 'Não especificado'}
+              Nome:{" "}
+              {detailedAnimal?.name ? detailedAnimal.name : "Não especificado"}
             </li>
             <li>
-              Sexo:{' '}
-              {detailedAnimal?.sex ? detailedAnimal.sex : 'Não especificado'}
+              Sexo:{" "}
+              {detailedAnimal?.sex ? detailedAnimal.sex : "Não especificado"}
             </li>
-            <li>Tipo: {detailedAnimal?.type ? 'Selvagem' : 'Doméstico'}</li>
+            <li>Tipo: {detailedAnimal?.type ? "Selvagem" : "Doméstico"}</li>
             <li>
-              Animal:{' '}
-              {detailedAnimal?.kind ? detailedAnimal.kind : 'Não especificado'}
+              Animal:{" "}
+              {detailedAnimal?.kind ? detailedAnimal.kind : "Não especificado"}
             </li>
             <li>
-              Espécie/Raça:{' '}
+              Espécie/Raça:{" "}
               {detailedAnimal?.animalSpecies
                 ? detailedAnimal.animalSpecies
-                : 'Não especificado'}
+                : "Não especificado"}
             </li>
             <li>
-              Idade:{' '}
-              {detailedAnimal?.age ? detailedAnimal.age : 'Não especificado'}
+              Idade:{" "}
+              {detailedAnimal?.age ? detailedAnimal.age : "Não especificado"}
             </li>
             <li>
-              Dono(a):{' '}
+              Dono(a):{" "}
               {detailedAnimal?.owner
                 ? detailedAnimal.owner
-                : 'Não especificado'}
+                : "Não especificado"}
             </li>
             <li>
-              Habitat:{' '}
+              Habitat:{" "}
               {detailedAnimal?.habitat
                 ? detailedAnimal.habitat
-                : 'Não especificado'}
+                : "Não especificado"}
             </li>
             <li>
-              Autor(a):{' '}
+              Autor(a):{" "}
               {detailedAnimal?.author
                 ? detailedAnimal.author
-                : 'Não especificado'}
+                : "Não especificado"}
             </li>
           </ul>
         </S.AnimalData>
       </S.DetailContent>
 
-      <RadixAccordion id={detailedAnimal!.id} detailedAnimal={detailedAnimal!}  />
+      <RadixAccordion
+        id={detailedAnimal!.id}
+        detailedAnimal={detailedAnimal!}
+      />
     </>
-  )
+  );
 }
