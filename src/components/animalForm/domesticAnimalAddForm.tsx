@@ -15,8 +15,8 @@ export default function DomesticAnimalAdd() {
         </S.InputContent>
 
         <S.InputContent>
-          <S.Label htmlFor="animalName">Foto:*</S.Label>
-          <input type="file" placeholder="Imagem" />
+          <S.Label htmlFor="animalName">Foto:</S.Label>
+          <input type="file" />
         </S.InputContent>
 
         <S.InputContent>
@@ -25,7 +25,7 @@ export default function DomesticAnimalAdd() {
         </S.InputContent>
 
         <S.InputContent>
-          <S.Label htmlFor="animalType">Tipo:*</S.Label>
+          <S.Label htmlFor="animalType">Espécie:*</S.Label>
           <S.InputField
             type="text"
             id="animalType"
