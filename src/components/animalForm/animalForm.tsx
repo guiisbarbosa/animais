@@ -1,6 +1,6 @@
 import * as S from './style'
 import { useState } from 'react'
-import DomesticAnimalAdd from './domesticAnimalAdd'
+import DomesticAnimalAdd from './domesticAnimalAddForm'
 
 export function AnimalForm() {
   const [formType, setFormType] = useState('domestico')
