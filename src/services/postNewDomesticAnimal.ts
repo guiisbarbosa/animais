@@ -4,7 +4,9 @@ import { DomesticAnimalFormValues } from "../schemas/domesticAnimal";
 export const postNewDomesticAnimal = async (data: DomesticAnimalFormValues) => {
   const formData = new FormData();
 
+  formData.append("type", String(true));
   formData.append("name", data.name);
+
   if (data.photo && data.photo.length > 0) {
     formData.append("photo", data.photo[0]); // arquivo
   }
