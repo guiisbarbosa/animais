@@ -4,7 +4,7 @@ import { DomesticAnimalFormValues } from "../schemas/domesticAnimal";
 export const postNewDomesticAnimal = async (data: DomesticAnimalFormValues) => {
   const formData = new FormData();
 
-  formData.append("type", String(true));
+  formData.append("type", String(false));
   formData.append("name", data.name);
 
   if (data.photo && data.photo.length > 0) {
@@ -30,7 +30,10 @@ export const postNewDomesticAnimal = async (data: DomesticAnimalFormValues) => {
   }
 
   try {
-    const response = await axios.post("localhost:8081/animals/animal", formData);
+    const response = await axios.post(
+      "http://localhost:8081/animals/animal",
+      formData
+    );
     return response.data;
   } catch (error) {
     console.error("Erro ao enviar os dados:", error);
